@@ -4,13 +4,15 @@ buildscript {
       mavenLocal()
    }
    dependencies {
-      classpath "us.ihmc:ihmc-build:0.14.0"
+      classpath "us.ihmc:ihmc-build:0.15.1"
+      classpath "us.ihmc:ihmc-ci-plugin:0.18.0"
       classpath "org.hidetake:gradle-ssh-plugin:2.9.0"
    }
 }
 
 apply plugin: "org.hidetake.ssh"
 apply plugin: "us.ihmc.ihmc-build"
+apply plugin: "us.ihmc.ihmc-ci-plugin"
 
 ihmc {
 //    loadProductProperties("../product.properties")
@@ -60,8 +62,8 @@ mainDependencies {
 }
 
 testDependencies {
+   compile group: "us.ihmc", name: "ihmc-ci-core-api", version: "0.18.0"
    compile group: "junit", name: "junit", version: "4.12"
-   compile group: "us.ihmc", name: "ihmc-ci-core-api", version: "0.17.0"
    compile group: "us.ihmc", name: "ihmc-commons-testing", version: "0.17.0"
    compile group: "us.ihmc", name: "ihmc-avatar-interfaces-test", version: "0.11.0"
    compile group: "us.ihmc", name: "ihmc-robotics-toolkit-test", version: "0.11.0"
