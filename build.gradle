@@ -5,14 +5,14 @@ buildscript {
    }
    dependencies {
       classpath "us.ihmc:ihmc-build:0.15.5"
-      classpath "us.ihmc:ihmc-ci-plugin:0.18.0"
+      classpath "us.ihmc:ihmc-ci:4.7"
       classpath "org.hidetake:gradle-ssh-plugin:2.9.0"
    }
 }
 
 apply plugin: "org.hidetake.ssh"
 apply plugin: "us.ihmc.ihmc-build"
-apply plugin: "us.ihmc.ihmc-ci-plugin"
+apply plugin: "us.ihmc.ihmc-ci"
 
 ihmc {
 //    loadProductProperties("../product.properties")
@@ -25,11 +25,6 @@ ihmc {
    configurePublications()
 }
 
-testSuites {
-   def prefix = "LIBS-IHMCOPENROBOTICSSOFTWARE"
-   bambooPlanKeys = [prefix + "FAST", prefix + "INDEVELOPMENT", prefix + "UI", prefix + "VIDEO"]
-}
-
 mainDependencies {
    compile group: 'us.ihmc', name: 'euclid-core', version: '0.4.13'
    compile group: 'us.ihmc', name: 'IHMCRealtime', version: '1.1.8'
@@ -40,7 +35,7 @@ mainDependencies {
    compile group: 'org.ejml', name: 'core', version: '0.30'
    compile group: 'com.martiansoftware', name: 'jsap', version: '2.1'
    compile group: 'org.bidib.jbidib.org.qbang.rxtx', name: 'rxtxcomm', version: '2.2'
-   compile group: "us.ihmc", name: "ihmc-commons", version: "0.24.0"
+   compile group: "us.ihmc", name: "ihmc-commons", version: "0.25.0"
    compile group: "us.ihmc", name: "ihmc-communication", version: "0.11.0"
    compile group: "us.ihmc", name: "ihmc-humanoid-robotics", version: "0.11.0"
    compile group: "us.ihmc", name: "ihmc-state-estimation", version: "0.11.0"
@@ -64,7 +59,7 @@ mainDependencies {
 testDependencies {
    compile group: "us.ihmc", name: "ihmc-ci-core-api", version: "0.18.0"
    compile group: "junit", name: "junit", version: "4.12"
-   compile group: "us.ihmc", name: "ihmc-commons-testing", version: "0.24.0"
+   compile group: "us.ihmc", name: "ihmc-commons-testing", version: "0.25.0"
    compile group: "us.ihmc", name: "ihmc-avatar-interfaces-test", version: "0.11.0"
    compile group: "us.ihmc", name: "ihmc-robotics-toolkit-test", version: "0.11.0"
 }
